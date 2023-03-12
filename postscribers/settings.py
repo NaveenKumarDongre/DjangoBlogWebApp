@@ -39,10 +39,11 @@ SECRET_KEY = "django-insecure-#$d+m9y11yt_3w_2o^#x*94jjvih*1k4g@7d-e1x%j(8zv*89z
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"]
 
 
 
@@ -92,7 +93,7 @@ MIDDLEWARE = [
 
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://naveenkumardongredjangoblog.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://naveenkumardongredjangoblog.up.railway.app',]
 
 
 
@@ -234,21 +235,19 @@ LOGIN_URL = 'users-login'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-STATIC_URL = "/static/"
 
-STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 
+STATIC_URL = '/static/'
+
+MEDIA_ROOT = (BASE_DIR / 'media')
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,"media")
-
-
 STATICFILES_DIRS = [
-
-    os.path.join(BASE_DIR,"static"),
-
+    BASE_DIR / 'static'
 ]
+
+STATIC_ROOT = (BASE_DIR / 'asset')
 
 
 
