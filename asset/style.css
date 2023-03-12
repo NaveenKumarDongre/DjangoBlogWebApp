@@ -1,0 +1,10 @@
+.cover {
+    background: url('/media/background.png');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.custom-nav {
+    display: flex !important;
+}
