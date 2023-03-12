@@ -55,7 +55,8 @@ MIDDLEWARE = [
     
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-8246.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-8246.up.railway.app']
+
 
 ROOT_URLCONF = "postscribers.urls"
 
@@ -158,7 +159,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-if not DEBUG:
 
-    CSRF_TRUSTED_ORIGINS = ['https://web-production-8246.up.railway.app/']
 
