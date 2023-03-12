@@ -92,8 +92,7 @@ MIDDLEWARE = [
 
 ]
 
-jls_extract_var = 'https://naveenkumardongredjangoblog.up.railway.app/'
-CSRF_TRUSTED_ORIGINS = [jls_extract_var]
+CSRF_TRUSTED_ORIGINS = ['https://naveenkumardongredjangoblog.up.railway.app']
 
 
 
