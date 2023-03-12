@@ -55,7 +55,7 @@ MIDDLEWARE = [
     
 ]
 
-CSRF_TRUSTED_ORIGINS = ['naveenkumardongredjangoblog.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://naveenkumardongredjangoblog.up.railway.app/']
 
 
 ROOT_URLCONF = "postscribers.urls"
