@@ -1,0 +1,41 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Logout page
+{% endblock title %}
+
+
+{% block content %}
+<div class="cover">
+<div class="container">
+   
+    <div class="row mt-5 pt-3">
+        <div class="col-md-6 offset-md-3">
+            <div class="card my-3 shadow">
+                <div class="card-body">
+                    <h3> Logout Page </h3>
+                    <hr>
+                    <div class="alert alert-info">
+                        You Have been Logged Out
+                    </div>
+                    <div class="d-grid gap-2 my-2">
+                        <a  class="btn btn-primary" href="{% url 'users-login'%}">Login</a>
+                        
+                        <a class="btn btn-success" href="{% url 'users-sign-up'%}">Sign Up</a>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+{% endblock content %}
+
+
+
+
