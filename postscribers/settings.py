@@ -18,13 +18,19 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 
 from pathlib import Path
+import dj_database_url
 import os 
 
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,17 +39,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-SECRET_KEY = "django-insecure-#$d+m9y11yt_3w_2o^#x*94jjvih*1k4g@7d-e1x%j(8zv*89z"
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
+
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
+
+# SECURITY WARNING: keep the secret key used in production secret!
+
+# SECRET_KEY = "django-insecure-#$d+m9y11yt_3w_2o^#x*94jjvih*1k4g@7d-e1x%j(8zv*89z"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+# DEBUG = True
 
 
-# ALLOWED_HOSTS = ["*"]
 ALLOWED_HOSTS = ["*"]
+
 
 
 
@@ -89,6 +103,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
 
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     
 
 ]
@@ -134,22 +150,26 @@ TEMPLATES = [
 WSGI_APPLICATION = "postscribers.wsgi.application"
 
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Database
 
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
+# DATABASES = {
+
+#     "default": {
+
+#         "ENGINE": "django.db.backends.sqlite3",
+
+#         "NAME": BASE_DIR / "db.sqlite3",
+
+#     }
+
+# }
+
 DATABASES = {
-
-    "default": {
-
-        "ENGINE": "django.db.backends.sqlite3",
-
-        "NAME": BASE_DIR / "db.sqlite3",
-
-    }
-
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600),
 }
 
 
@@ -254,13 +274,13 @@ STATIC_ROOT = (BASE_DIR / 'asset')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
 
-EMAIL_HOST_USER = 'nkdplr@gmail.com'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 
-EMAIL_HOST_PASSWORD = 'jvvsumptxxflaauf'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
-EMAIL_PORT = 587
+EMAIL_PORT =  os.getenv('EMAIL_PORT')
 
 EMAIL_USE_TLS = True
 
