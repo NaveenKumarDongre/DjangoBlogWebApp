@@ -15,4 +15,4 @@ Welcome to the Django Blog Web Application! This web application is built using 
 
 For a detailed demonstration of the project, please watch our video walkthrough:
 
-[Project Video](<./BlogApp.mp4>)
+[Project Video](./BlogApp.mp4)
